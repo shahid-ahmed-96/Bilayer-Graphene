@@ -2,19 +2,19 @@ clear
 
 #=========================================================================Initialization=================================================================#
 
-variable 		        h   index   4 6 8 10 26 28 30           # Theta_Values
-variable            t   equal   300                         # Temperature
+variable 		    h   index   2 4 6 8 10 12 14 16 18 20 22 24 26 28 30           # Theta_Values
+variable            t   equal   300                                                # Temperature
 variable            l1  equal   100
 variable            l2  equal   250
 
-units           		metal
+units               metal
 dimension           3   							                      # (time=ps, length A)
-boundary			      f s p						                 							                      
+boundary			f s p						                 							                      
 atom_style          atomic                                  # No charge interactions
-read_data		        bilayer.${h}.${l1}.${l2}.lammps-data	  # File where atomic positions are saved
+read_data		    bilayer.${h}.${l1}.${l2}.lammps-data	  # File where atomic positions are saved
 log                 log.$h
-mass				        1	12.011					                      # Atomic mass of Carbon
-mass                2 12.011
+mass				1     12.011					                      # Atomic mass of Carbon
+mass                2     12.011
 
     
 pair_style          hybrid tersoff lj/cut 5.0          # Using optimized tersoff for Graphene and lj for vdw
@@ -24,14 +24,14 @@ pair_coeff          1 2 lj/cut  0.00456   3.431
 
 #===========================================================================Variables====================================================================#
 
-variable        		tlo       equal   270					  # Temperature of atoms in COLD reservoir
-variable        		thi		    equal   330					  # Temperature of atoms in HOT reservoir
-variable            p   	    equal   10					  # N_every
-variable            s         equal   100					  # N_repeat
-variable            d	  	    equal   $p*$s				  # N_freq
-variable            rt    	  equal   15        	  # reservoir thickness
-variable            dt      	equal   0.0005     	  # timestep
-variable            r1        equal   2000000       # relaxation run
+variable        	tlo       equal   270				# Temperature of atoms in COLD reservoir
+variable        	thi		  equal   330				# Temperature of atoms in HOT reservoir
+variable            p   	  equal   10				# N_every
+variable            s         equal   100				# N_repeat
+variable            d	  	  equal   $p*$s				# N_freq
+variable            rt    	  equal   15        	    # reservoir thickness
+variable            dt        equal   0.0005     	    # timestep
+variable            r1        equal   2000000           # relaxation run
 variable            r2    	  equal   3000000  			# equilibrium run
 variable           	r3    	  equal   2000000 			# production run
 timestep            ${dt}
@@ -58,9 +58,9 @@ group               RIGHT     region  	right
 fix                 L         LEFT      setforce 0.0 0.0 0.0 region left
 fix                 R         RIGHT     setforce 0.0 0.0 0.0 region right
 
-region              hot     	block   	${a2}  ${a3}  INF INF INF INF  units box 
-region              cold    	block   	${b3}  ${b2}  INF INF INF INF  units box
-group               COLD    	region  	cold
+region              hot       block   	${a2}  ${a3}  INF INF INF INF  units box 
+region              cold      block   	${b3}  ${b2}  INF INF INF INF  units box
+group               COLD      region  	cold
 group               HOT       region    hot
 group               SAMPLE    subtract  all   LEFT RIGHT 
 group               SAMPLE2   subtract  all   LEFT RIGHT HOT COLD 
@@ -81,16 +81,16 @@ unfix               1
 
 #=======================================================================Equilibriation run===============================================================#
 
-fix       			    2 	  	SAMPLE   	nve
+fix       			2 	  	SAMPLE   	nve
 fix                 E_in    HOT       langevin   ${thi} ${thi}  0.05  590804  tally yes  #Damping value should be 100*timestep = 100*0.0005 = 0.05
 fix                 E_out   COLD      langevin   ${tlo} ${tlo}  0.05  28859   tally yes
 
-compute         		Thot  	HOT 		  temp/region   hot
-compute         		Tcold 	COLD 		  temp/region   cold
+compute         	Thot  	HOT 		  temp/region   hot
+compute         	Tcold 	COLD 		  temp/region   cold
 
 fix                 AVE     all       ave/time $p $s $d v_tdiff ave running
-thermo_style    		custom 	step      temp  c_Thot 	c_Tcold 	f_E_in 	f_E_out v_tdiff f_AVE 
-run             		${r2}
+thermo_style    	custom 	step      temp  c_Thot 	c_Tcold 	f_E_in 	f_E_out v_tdiff f_AVE 
+run             	${r2}
 
 #=======================================================================Production run final=============================================================#
 
@@ -98,12 +98,12 @@ fix                 E_in    HOT       langevin   ${thi} ${thi}  0.05 590804 tall
 fix                 E_out   COLD      langevin   ${tlo} ${tlo}  0.05 28859  tally yes
 
 variable            x_grids equal   100
-variable			      x_bin 	equal 	(1/(${x_grids}))
-variable			      value 	format 	x_bin %.10g
-compute      		    x_bins 	all 		chunk/atom 		bin/1d 	x 		lower 	${value} 	units 	reduced
-fix          		    3       all 	  ave/chunk 	$p    $s    $d 	x_bins 	temp ave running file bilayer_profile.ac.${h}.langevin overwrite 
-variable 			      start_time equal time
-run             		${r3}
+variable			x_bin 	equal 	(1/(${x_grids}))
+variable			value 	format 	x_bin %.10g
+compute      		x_bins 	all 		chunk/atom 		bin/1d 	x 		lower 	${value} 	units 	reduced
+fix          		3       all 	  ave/chunk 	$p    $s    $d 	x_bins 	temp ave running file bilayer_profile.ac.${h}.langevin overwrite 
+variable 			start_time equal time
+run             	${r3}
 
 #=======================================================================Post Processing==================================================================#
 
@@ -121,4 +121,4 @@ print               ${len_x}      append  length_x.ac.dat      screen no
 print               ${rt}         append  res_thick_val.ac.dat screen no
 
 next                h
-jump                in.bilayer_graphene.lmp
+jump                input.lmp
