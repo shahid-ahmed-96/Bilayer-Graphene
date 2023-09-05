@@ -8,7 +8,10 @@ Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.<br
 Sample is AA stacked bilayer-graphene with different twist angles. <br>
 Structure creation: ASE (Python) <br>
 Software: LAMMPS  <br>
-Visualization: Matplotlib (Python) 
+Visualization: Matplotlib (Python) <br>
+.lammps-data are structure files <br>
+.langevin files show temperature variation across the sample <br>
+.dat files are outputs of the lammps script "input.lmp"
 
 ## Step1: Creation of Structure file.
 LAMMPS require orthogonal structures. <br>
