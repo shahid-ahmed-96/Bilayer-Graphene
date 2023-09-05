@@ -6,8 +6,8 @@ Reference: Liu, Wenxiang, et al. "Anisotropic thermal transport in twisted bilay
 ## Introduction:
 Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.
 Sample is AA stacked bilayer-graphene with different twist angles.
-Structure creation: ASE (Python);
-Software: LAMMPS;  
+Structure creation: ASE (Python) <br>
+Software: LAMMPS;  <br>
 Visualization: Matplotlib (Python) 
 
 ## Step1: Creation of Structure file.
