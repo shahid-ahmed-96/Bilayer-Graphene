@@ -15,9 +15,9 @@ Visualization: Matplotlib (Python) <br>
 
 ## Step1: Creation of Structure file.
 LAMMPS require orthogonal structures. <br>
-The primitive cell of monolayer graphene with 2 atoms was modified.<br>  
+The primitive cell of monolayer graphene with 2 atoms was modified. <br>  
 The unit cell now consists of 4 atoms, and the supercell is orthogonal. <br>
-Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files.<br>
+Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files. <br>
 All files are generated for arm_chair configuration 
 
 ## Step2: Relaxations  
