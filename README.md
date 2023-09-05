@@ -30,5 +30,6 @@ Langevin thermostats are used for maintaining temperature gradient in the sample
 The script generates a few files such as heat input values, dimensions of samples etc. which acts as input for post processing python file.<br> 
 
 ## Step4: Post processing
+k_anisotropic.ipynb
 Similar steps can be run for zig-zag configuration. 
 Finally compare results for both.
