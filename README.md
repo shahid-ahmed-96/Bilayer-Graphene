@@ -14,7 +14,7 @@ Visualization: Matplotlib (Python)
 LAMMPS require orthogonal structures. 
 The primitive cell of monolayer graphene with 2 atoms was modified. 
 The unit cell now consists of 4 atoms, and the supercell is orthogonal. 
-Refer to Jupyter notebook "structure.ipynb" to get LAMMPS readable data files.
+Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files.
 
 ## Step2: Relaxations  
 Used NPT with periodic boundaries in monolayer graphene to get the relaxed bond lengths (Prior to Step1)
