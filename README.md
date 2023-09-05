@@ -23,10 +23,10 @@ In the given script used  NVT for relaxation.
 Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
 
 ## Step3: Running the input script.
-LAMMPS script "input.lmp" reads the structure files and potential file "C.tersoff".
-It uses the NVE microcanonical ensemble to maintain energy of the the system.
-Langevin thermostats are used for maintaining temperature gradient in the sample.
-The script generates a few files which acts as input for post processing python file. 
+LAMMPS script "input.lmp" reads the structure files and potential file "C.tersoff".<br>
+It uses the NVE microcanonical ensemble to maintain energy of the the system.<br>
+Langevin thermostats are used for maintaining temperature gradient in the sample. <br>
+The script generates a few files such as heat input values, dimensions of samples etc. which acts as input for post processing python file.<br> 
 
 ## Step4: Post processing
 Similar steps can be run for zig-zag configuration. 
