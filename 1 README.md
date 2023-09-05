@@ -9,7 +9,7 @@ Sample is AA stacked bilayer-graphene with different twist angles. <br>
 Structure creation: ASE (Python) <br>
 Software: LAMMPS  <br>
 Visualization: Matplotlib (Python) <br>
-.lammps-data are structure files <br>
+.lammps-data are structure files 100.250 shows width and length of sample. <br>
 .langevin files show temperature variation across the sample <br>
 .dat files are outputs of the lammps script "input.lmp"
 
