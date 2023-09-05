@@ -1,2 +1,33 @@
 # Bilayer-Graphene
-A LAMMPS script to estimate the thermal conductivity of twisted bilayer graphene. Jupyter notebook python codes are also provided for visualization of the results.
+
+Reference: Liu, Wenxiang, et al. "Anisotropic thermal transport in twisted bilayer graphene." Physical Chemistry Chemical Physics 24.36 (2022): 21722-21728.
+
+
+## Introduction:
+Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.
+Sample is AA stacked bilayer-graphene with different twist angles.
+Structure creation: ASE (Python);
+Software: LAMMPS;  
+Visualization: Matplotlib (Python) 
+
+## Step1: Creation of Structure file.
+LAMMPS require orthogonal structures. 
+The primitive cell of monolayer graphene with 2 atoms was modified. 
+The unit cell now consists of 4 atoms, and the supercell is orthogonal. 
+Refer to Jupyter notebook "structure.ipynb" to get LAMMPS readable data files.
+
+## Step2: Relaxations  
+Used NPT with periodic boundaries in monolayer graphene to get the relaxed bond lengths (Prior to Step1)
+Used these bond lengths for the creation of the bilayer structure files in step1.
+In the given script used  NVT for relaxation.
+Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
+
+## Step3: Running the input script.
+LAMMPS script "input.lmp" reads the structure files and potential file "C.tersoff".
+It uses the NVE microcanonical ensemble to maintain energy of the the system.
+Langevin thermostats are used for maintaining temperature gradient in the sample.
+The script generates a few files which acts as input for post processing python file. 
+
+## Step4: Post processing
+Similar steps can be run for zig-zag configuration. 
+Finally compare results for both.
