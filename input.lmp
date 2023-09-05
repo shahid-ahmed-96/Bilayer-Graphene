@@ -2,7 +2,7 @@ clear
 
 #=========================================================================Initialization=================================================================#
 
-variable 		    h   index   2 4 6 8 10 12 14 16 18 20 22 24 26 28 30           # Theta_Values
+variable 		   h   index   2 4 6 8 10 12 14 16 18 20 22 24 26 28 30           # Theta_Values
 variable            t   equal   300                                                # Temperature
 variable            l1  equal   100
 variable            l2  equal   250
