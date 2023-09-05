@@ -4,23 +4,23 @@ Reference: Liu, Wenxiang, et al. "Anisotropic thermal transport in twisted bilay
 
 
 ## Introduction:
-Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.
+Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.<br>
 Sample is AA stacked bilayer-graphene with different twist angles. <br>
 Structure creation: ASE (Python) <br>
-Software: LAMMPS;  <br>
+Software: LAMMPS  <br>
 Visualization: Matplotlib (Python) 
 
 ## Step1: Creation of Structure file.
-LAMMPS require orthogonal structures. 
-The primitive cell of monolayer graphene with 2 atoms was modified. 
-The unit cell now consists of 4 atoms, and the supercell is orthogonal. 
-Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files.
+LAMMPS require orthogonal structures. <br>
+The primitive cell of monolayer graphene with 2 atoms was modified.<br>  
+The unit cell now consists of 4 atoms, and the supercell is orthogonal. <br>
+Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files.<br>
 All files are generated for arm_chair configuration 
 
 ## Step2: Relaxations  
-Used NPT with periodic boundaries in monolayer graphene to get the relaxed bond lengths (Prior to Step1)
-Used these bond lengths for the creation of the bilayer structure files in step1.
-In the given script used  NVT for relaxation.
+Used NPT with periodic boundaries in monolayer graphene to get the relaxed bond lengths (Prior to Step1)<br>
+Used these bond lengths for the creation of the bilayer structure files in step1.<br>
+In the given script used  NVT for relaxation.<br>
 Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
 
 ## Step3: Running the input script.
@@ -30,6 +30,6 @@ Langevin thermostats are used for maintaining temperature gradient in the sample
 The script generates a few files such as heat input values, dimensions of samples etc. which acts as input for post processing python file.<br> 
 
 ## Step4: Post processing
-k_anisotropic.ipynb
-Similar steps can be run for zig-zag configuration. 
+k_anisotropic.ipynb is the file for post processing <br>
+Similar steps can be run for zig-zag configuration. <br>
 Finally compare results for both.
