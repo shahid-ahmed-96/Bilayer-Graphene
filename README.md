@@ -18,7 +18,7 @@ This project employs non-equilibrium molecular dynamics to estimate thermal cond
 ## Step 1: Creating Structure Files
 - LAMMPS requires orthogonal structures.
 - The monolayer graphene's unit cell was created to generate orthogonal supercells.
-- Jupyter notebook "bilayer_arm.ipynb" provides the steps for generating LAMMPS-readable data files.
+- Jupyter notebook "structure.ipynb" provides the steps for generating LAMMPS-readable data files.
 - Files generated are for the armchair configuration. (Similar steps were taken for zig-zag configuration)
 
 ## Step 2: Relaxations
@@ -33,7 +33,7 @@ This project employs non-equilibrium molecular dynamics to estimate thermal cond
 - The script generates files, e.g., heat input values and dimensions, for Python post-processing.
 
 ## Step 4: Post Processing
-- `k_anisotropic.ipynb` performs post-processing.
+- `post_process.ipynb` performs post-processing.
 - Steps can be applied to zig-zag configuration.
 - Finally, results for both configurations can be compared.
 
