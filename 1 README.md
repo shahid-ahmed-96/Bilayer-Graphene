@@ -1,38 +1,41 @@
 # Bilayer-Graphene
 
-Reference: Liu, Wenxiang, et al. "Anisotropic thermal transport in twisted bilayer graphene." Physical Chemistry Chemical Physics 24.36 (2022): 21722-21728.
+## Reference
+**Paper:** Liu, W. et al. "Anisotropic thermal transport in twisted bilayer graphene." Physical Chemistry Chemical Physics 24.36 (2022): 21722-21728.
 
+## Introduction
+This project employs non-equilibrium molecular dynamics to estimate thermal conductivity in bilayer graphene. The samples studied consist of AA stacked bilayer-graphene with varying twist angles.
 
-## Introduction:
-Utilized non-equilibrium molecular dynamics to estimate thermal conductivity.<br>
-Sample is AA stacked bilayer-graphene with different twist angles. <br>
-Structure creation: ASE (Python) <br>
-Software: LAMMPS  <br>
-Visualization: Matplotlib (Python) <br>
-.lammps-data are structure files 100.250 shows width and length of sample. <br>
-.langevin files show temperature variation across the sample <br>
-.dat files are outputs of the lammps script "input.lmp"
+### Tools Used
+- **Structure Creation:** Python's ASE
+- **Simulation Software:** LAMMPS
+- **Visualization:** Python's Matplotlib
+- **Data Files:**
+  - `.lammps-data`: Structure files (e.g., "100.250" for dimensions)
+  - `.langevin` files: Record temperature variations
+  - `.dat` files: LAMMPS script outputs
 
-## Step1: Creation of Structure file.
-LAMMPS require orthogonal structures. <br>
-The primitive cell of monolayer graphene with 2 atoms was modified. <br>  
-The unit cell now consists of 4 atoms, and the supercell is orthogonal. <br>
-Refer to Jupyter notebook "bilayer_arm.ipynb" to get LAMMPS readable data files. <br>
-All files are generated for arm_chair configuration 
+## Step 1: Creating Structure Files
+- LAMMPS requires orthogonal structures.
+- The monolayer graphene's primitive cell was modified to create orthogonal supercells.
+- Jupyter notebook "bilayer_arm.ipynb" provides LAMMPS-readable data files.
+- Files generated are for the armchair configuration.
 
-## Step2: Relaxations  
-Used NPT with periodic boundaries in monolayer graphene to get the relaxed bond lengths (Prior to Step1)<br>
-Used these bond lengths for the creation of the bilayer structure files in step1.<br>
-In the given script used  NVT for relaxation.<br>
-Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
+## Step 2: Relaxations
+- Relaxed bond lengths obtained using NPT in monolayer graphene (before Step 1).
+- These lengths used for bilayer structure files in Step 1.
+- NVT relaxation used in the provided script.
+- Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
 
-## Step3: Running the input script.
-LAMMPS script "input.lmp" reads the structure files and potential file "C.tersoff".<br>
-It uses the NVE microcanonical ensemble to maintain energy of the the system.<br>
-Langevin thermostats are used for maintaining temperature gradient in the sample. <br>
-The script generates a few files such as heat input values, dimensions of samples etc. which acts as input for post processing python file.<br> 
+## Step 3: Running the Input Script
+- LAMMPS script "input.lmp" reads structure and potential files.
+- NVE microcanonical ensemble maintains energy.
+- Langevin thermostats create temperature gradients.
+- The script generates files, e.g., heat input values and dimensions, for Python post-processing.
 
-## Step4: Post processing
-k_anisotropic.ipynb is the file for post processing <br>
-Similar steps can be run for zig-zag configuration. <br>
-Finally compare results for both.
+## Step 4: Post Processing
+- `k_anisotropic.ipynb` performs post-processing.
+- Steps can be applied to zig-zag configuration.
+- Finally, results for both configurations can be compared.
+
+For detailed insights and analysis, refer to the referenced paper.
