@@ -10,9 +10,9 @@ This project employs non-equilibrium molecular dynamics to estimate thermal cond
 - **Structure Creation:** Python's ASE
 - **Simulation Software:** LAMMPS
 - **Visualization:** Python's Matplotlib
-- **Data Files:**
-  - `.lammps-data`: Structure files (e.g., "bilayer.30.100.250" [30-> twist angle, 100nm sample width, 250nm sample length)
-  - `.langevin` files: Record temperature variations (e.g., "bilayer_ac.30.langevin" [30-> twist angle, ac->stacking)
+- **HelpFiles:**
+  - `.lammps-data`: Structure files (e.g., "bilayer.30.100.250" [30-> twist angle, 100nm sample width, 250nm sample length]
+  - `.langevin` files: Record temperature variations (e.g., "bilayer_ac.30.langevin" [30-> twist angle, ac->stacking]
   - `.dat` files: LAMMPS script outputs
 
 ## Step 1: Creating Structure Files
