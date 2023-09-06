@@ -11,20 +11,19 @@ This project employs non-equilibrium molecular dynamics to estimate thermal cond
 - **Simulation Software:** LAMMPS
 - **Visualization:** Python's Matplotlib
 - **Data Files:**
-  - `.lammps-data`: Structure files (e.g., "100.250" for dimensions)
+  - `.lammps-data`: Structure files (e.g., "bilayer.10.100.250" [10-> twist angle, 100nm sample width, 250nm sample length)
   - `.langevin` files: Record temperature variations
   - `.dat` files: LAMMPS script outputs
 
 ## Step 1: Creating Structure Files
 - LAMMPS requires orthogonal structures.
-- The monolayer graphene's primitive cell was modified to create orthogonal supercells.
-- Jupyter notebook "bilayer_arm.ipynb" provides LAMMPS-readable data files.
-- Files generated are for the armchair configuration.
+- The monolayer graphene's unit cell was created to generate orthogonal supercells.
+- Jupyter notebook "bilayer_arm.ipynb" provides the steps for generating LAMMPS-readable data files.
+- Files generated are for the armchair configuration. (Similar steps were taken for zig-zag configuration)
 
 ## Step 2: Relaxations
-- Relaxed bond lengths obtained using NPT in monolayer graphene (before Step 1).
-- These lengths used for bilayer structure files in Step 1.
-- NVT relaxation used in the provided script.
+- Relaxed bond lengths for Step 1 was obtained using NPT in periodic monolayer graphene (LAMMPS Command-> boundary p p p).
+- For bilayer structures NVT relaxation was used as given in the provided script.
 - Potential: Optimized Tersoff (intralayer) + LJ (interlayer)
 
 ## Step 3: Running the Input Script
